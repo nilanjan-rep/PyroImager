@@ -1,5 +1,5 @@
 """
-image_io.py – format-agnostic image loading.
+image_io.py -- format-agnostic image loading.
 
 Returns float64 NumPy arrays of shape (H, W, 3) with values in [0, 1].
 Loaders are tried in order:
@@ -181,7 +181,7 @@ def _load_netpbm(path: Path) -> np.ndarray:
         grey = data.reshape(height, width) / maxval
         return np.stack([grey, grey, grey], axis=-1)
 
-    else:  # P4 – 1-bit bitmap
+    else:  # P4 -- 1-bit bitmap
         n_bytes = (width + 7) // 8
         rows = []
         for r in range(height):
