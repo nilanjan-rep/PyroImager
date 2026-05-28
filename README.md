@@ -2,6 +2,9 @@
 
 A Python library for estimating temperature from a region-of-interest (ROI) in a colour image using ratio pyrometry. The algorithm assumes that the colour signal inside the ROI comes solely from black-body radiation, and uses Bayesian inference to combine measurements from all available channel pairs into a single posterior distribution on temperature.
 
+## AI Usage Disclosure
+This project was co-authored and developed with the assistance of *Claude code*. All code, documentation, and logic have been reviewed, tested, and curated by a human developer to ensure quality and accuracy.
+
 ## Theory
 
 ### Black-body Radiation and Camera Signals
@@ -70,9 +73,9 @@ Pillow or imageio    # for image loading (.ppm files work without either)
 openpyxl             # example only, to read the xlsx QE file
 ```
 
-## Camera Parameters (CS165CU)
+## Camera Parameters (CS165CU/Blackfly S BFS-PGE-16S2C)
 
-The example targets the **Thorlabs CS165CU** (1440 x 1080) with the IR filter physically removed. Removing the filter gives the blue Bayer pixels sensitivity into the near-IR, widening the effective spectral separation between channels and improving temperature sensitivity.
+The example targets the **Thorlabs CS165CU**/**FLIR Blackfly S BFS-PGE-16S2C** or equivalent cameras using the **Sony IMX273** sensor (1440 x 1080) with the IR filter physically removed. Removing the filter gives the blue pixels sensitivity into the near-IR, widening the effective spectral separation between channels and improving temperature sensitivity.
 
 The camera has a 12-bit ADC, but the test image stores only the top 8 MSBs, so 1 stored DN corresponds to 16 native DN:
 
