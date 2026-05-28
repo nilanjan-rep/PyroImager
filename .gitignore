@@ -1,0 +1,5 @@
+.DS_Store
+.vscode/
+CLAUDE.md
+**/*.png
+**/__pycache__/
