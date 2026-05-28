@@ -58,7 +58,7 @@ $$\chi^2_{ij} = -2\log\mathcal{L}_{ij}(T^*_\mathrm{MAP}),\qquad \chi^2_{ij}/N_\m
 Clone the repository and install with pip:
 
 ```bash
-git clone https://github.com/your-username/ImagePyrometer.git
+git clone https://github.com/nilanjan-rep/PyroImager.git
 cd ImagePyrometer
 pip install -e .
 ```
