@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pyroimager"
+version = "0.1.0"
+description = "Bayesian ratio pyrometry -- temperature estimation from colour images"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.6",
+]
+
+[project.optional-dependencies]
+# At least one image loader is needed for non-PPM files
+image = ["Pillow>=9.0"]
+# Required only for the example script
+example = ["openpyxl>=3.0", "Pillow>=9.0"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyrometer*"]

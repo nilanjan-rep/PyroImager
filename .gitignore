@@ -4,3 +4,4 @@ CLAUDE.md
 session.txt
 **/*.png
 **/__pycache__/
+pyroimager.egg-info/
