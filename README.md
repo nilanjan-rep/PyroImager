@@ -59,7 +59,7 @@ Clone the repository and install with pip:
 
 ```bash
 git clone https://github.com/nilanjan-rep/PyroImager.git
-cd ImagePyrometer
+cd PyroImager
 pip install -e .
 ```
 
