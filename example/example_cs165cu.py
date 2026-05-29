@@ -102,7 +102,29 @@ for pair in pyro.pairs:
     print(f"  {pair[0]}/{pair[1]:<5s}: "
           f"{result.n_valid_pixels_per_pair[pair]:6d} valid pixels")
 
+# Extract summary statistics from the first posterior pi_1(T).
+T_grid = result.temperatures_grid
+first_posterior = result.posterior_sequential[1]
+map_idx = int(np.argmax(first_posterior))
+map_T = float(T_grid[map_idx])
+mean_T = float(np.trapezoid(T_grid * first_posterior, T_grid))
+var_T = float(np.trapezoid((T_grid - mean_T) ** 2 * first_posterior, T_grid))
+std_T = float(np.sqrt(max(var_T, 0.0)))
+ci_68 = pyro._hdi(first_posterior, T_grid, 0.68)
+ci_95 = pyro._hdi(first_posterior, T_grid, 0.95)
 print()
+print(f"Summary statistics from pair "
+      f"{pyro.pairs[0][0]}/{pyro.pairs[0][1]:<5s} only:")
+print(f"MAP temperature        : {map_T:7.1f} K  "
+      f"({map_T - 273.15:.1f} deg C)")
+print(f"Posterior mean +/- std : {mean_T:7.1f} +/- "
+      f"{var_T:.1f} K")
+print(f"68% credible interval  : [{ci_68[0]:.1f}, {ci_68[1]:.1f}] K")
+print(f"95% credible interval  : [{ci_95[0]:.1f}, {ci_95[1]:.1f}] K")
+
+# Print summary statistics from all three pairs combined
+print()
+print(f"Summary statistics from all three pairs combined:")
 print(f"MAP temperature        : {result.map_temperature:7.1f} K  "
       f"({result.map_temperature - 273.15:.1f} deg C)")
 print(f"Posterior mean +/- std : {result.mean_temperature:7.1f} +/- "
